@@ -1,0 +1,5 @@
+{
+    "name": "acli",
+    "description": "A collection of skills and agents for working with the acli utility for JIRA and Confluence.",
+    "version": "0.1.0"
+}
