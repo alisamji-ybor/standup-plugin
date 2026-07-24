@@ -1,5 +1,5 @@
 {
-    "name": "acli",
-    "description": "A collection of skills and agents for working with the acli utility for JIRA and Confluence.",
+    "name": "ybor-standup",
+    "description": "A collection of skills and agents for drafting and posting standup updates at Ybor.AI.",
     "version": "0.1.0"
 }

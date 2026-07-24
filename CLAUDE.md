@@ -1,4 +1,4 @@
-# Claude Plugin for `acli`
+# Compose Standup Updates (Ybor-style)
 
 ## Claude Code Documentation
 
@@ -6,7 +6,7 @@
 - Fetch the matching full URL when working on a specific plugin component (skills, agents, hooks, MCP servers, etc.).
 
 ## `acli` Conventions
-
+<!-- TODO: Improve this section to better document the actual subset of valid ADF. -->
 - When an `acli` command offers an output or input format option, use ADF or JSON.
 - ADF schema: https://go.atlassian.com/adf-json-schema
 - Any skill, agent, or hook that produces ADF must validate its output against that schema before passing it to `acli`.
