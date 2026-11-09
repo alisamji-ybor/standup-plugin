@@ -17,14 +17,15 @@ created=$(acli jira workitem search \
   --jql "project = \"YP6M\" AND creator = currentUser() AND created >= \"$since\" AND created < \"$until_date\"" \
   --json | jq -c 'map({key, "summary": .fields.summary, "issueType": .fields.issuetype.name})')
 
+# TODO: sprint_tickets and blockers can probably be combined in a single query.
 blockers=$(acli jira workitem search \
   --fields 'issuetype,summary,status' \
-  --jql 'project = "YP6M" AND assignee = currentUser() AND status = "Blocked"' \
+  --jql 'project = "YP6M" AND assignee = currentUser() AND status = "Blocked" AND sprint in openSprints()' \
   --json | jq -c 'map({key, "issueType": .fields.issuetype.name, "summary": .fields.summary, "status": .fields.status.name})')
 
 sprint_tickets=$(acli jira workitem search \
   --fields 'issuetype,summary,status' \
-  --jql 'project = "YP6M" AND assignee = currentUser() AND sprint in openSprints()' \
+  --jql 'project = "YP6M" AND assignee = currentUser() AND sprint in openSprints() AND (status ="Blocked" OR updated >= "'$since'")' \
   --json | jq -c 'map({key, "issueType": .fields.issuetype.name, "summary": .fields.summary, "status": .fields.status.name})')
 sprint_tickets="${sprint_tickets:-[]}"
 [ -z "$sprint_tickets" ] && sprint_tickets="[]"
